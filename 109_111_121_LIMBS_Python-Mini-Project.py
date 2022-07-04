@@ -13,21 +13,7 @@ elif programme=="M.Tech." or programme=="M. Tech.":
     year = int(input("'1' for FY, '2' for SY.\nYear: "))
 elif programme=="Ph.D." or programme=="PhD":
     year = int(input("Enter a number indicating the number of years you have been doing this course.\nYear: "))
-        # books_list = open('books_list.txt', 'w')
-        # books_list.write("Engineering Physics by Publisher 1")
-        # books_list.write("\nEngineering Physics Publisher 2")
-        # books_list.close()
-        # books_list = open('books_list.txt', 'r')
-        # print(books_list.read())
-        # books_lis = open('BOOKS_MP_PP.csv', 'r')
-        # print(books_lis.read())
-        # books_lis.close()
-        # books_lis = open('BOOKS_MP_PP.csv', 'a')
-        # books_lis.write(subject)
-        # books_lis.write("\n")
-        # books_lis.close()
-        # b_l = open('BOOKS_MP.csv', 'r')
-        # print(b_l.read())
+        
 if programme=="B. Tech.":
     def btech():
         if year==1:
