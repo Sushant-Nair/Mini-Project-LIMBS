@@ -68,3 +68,46 @@ b_i.write(input("Enter the subject of the book which you want to issue: "))
 b_i.close()
 b_i = open('BOOKS_ISSUE.csv', 'r')
 print(b_i.read())
+from tkinter.tix import INTEGER
+
+#calculating fine
+iss_date=input("Enter issue date")
+k=iss_date.split("-")
+if (len(k)==3):
+  if type(k[0])==int and type(k[1])==int and type(k[2])==int:
+    if(k[0]<=30 and k[1]<=12 and k[2]<=2022):
+      ret_date=input("Enter return date")
+      j=iss_date.split("-")
+      if (len(j)==3):
+        if(j[0] is INTEGER and j[1] is INTEGER and j[2] is INTEGER):
+          if(j[0]<=30 and j[1]<=12 and j[2]<=2022):
+            issue_date = k[0]
+            return_date = j[0]
+            issue_month = j[1]
+            return_month = k[1]
+            issue_year = k[2]
+            return_year = j[2]
+            if issue_date == return_date:
+              print("Same day")
+              quit()
+            if issue_year > return_year:
+              print("Invalid input")
+              quit()
+            if issue_year <= return_year:
+              if issue_date-return_date < 0:
+                if issue_date*issue_month > return_date*return_month:
+                  print("Invalid input")
+                  quit()
+              else:
+                if issue_date > return_date:
+                  print("Invalid input")
+                  quit()
+                else:
+                  if return_date - issue_date >= 7:
+                    print("Interest charged rs 50.")
+                    quit()
+
+
+                
+
+
