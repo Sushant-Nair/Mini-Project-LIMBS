@@ -15,19 +15,6 @@ elif programme=="M.TECH." or programme=="M. TECH.":
     year = int(input("'1' for FY, '2' for SY.\nYear: "))
 elif programme=="PH.D." or programme=="PHD":
     year = int(input("Enter a number indicating the number of years you have been doing this course.\nYear: "))        
-if role=="FACULTY":
-    print("As a Faculty, you are not required to access this system. You have unlimited access\nto an unlimited number of books for an unlimited period of time.\nPlease visit the library to get a copy of a book you require.")
-elif age<18:
-    print("Only people of age 18 and above can access this system.")
-else:
-    if programme=="B. TECH.":
-        btech()
-    elif programme=="M. TECH.":
-        mtech():
-    elif programme=="PH. D.":
-        phd():
-    else:
-        print("The entered programme does not exist.")
 def btech():
     if year==1:
         b_l = open('FY_BTECH_BOOKS.csv', 'r')
@@ -36,19 +23,24 @@ def btech():
     elif year==2:
         if field=="Computer Engineering" or "COMPS":
             b_l = open('SY_BTECH_COMPS.csv', 'r')
-            print(b_l.read())
+            for i in b_l.read().split(","):
+                print(i,end="\t")
         elif field=="Electronics Engineering" or "ETRX":
             b_l = open('SY_BTECH_ETRX.csv', 'r')
-            print(b_l.read())
+            for i in b_l.read().split(","):
+                print(i,end="\t")
         elif field=="Electronics and Telecommunications Engineering" or "EXTC":
             b_l = open('SY_BTECH_EXTC.csv', 'r')
-            print(b_l.read())
+            for i in b_l.read().split(","):
+                print(i,end="\t")
         elif field=="Information Technology" or "IT":
             b_l = open('SY_BTECH_IT.csv', 'r')
-            print(b_l.read())
+            for i in b_l.read().split(","):
+                print(i,end="\t")
         elif field=="Mechanical Engineering" or "MECH":
             b_l = open('SY_BTECH_MECH.csv', 'r')
-            print(b_l.read())
+            for i in b_l.read().split(","):
+                print(i,end="\t")
     elif year==3:
             print("Not Available!")
     elif year==4:
@@ -59,6 +51,21 @@ def mtech():
     print("Not Available at the moment!")
 def phd():
     print("Not Available at the moment!")
+if role=="FACULTY":
+    print("As a Faculty, you are not required to access this system. You have unlimited access\nto an unlimited number of books for an unlimited period of time.\nPlease visit the library to get a copy of a book you require.")
+    exit()
+elif age<18:
+    print("Only people of age 18 and above can access this system.")
+    exit()
+else:
+    if programme=="B. TECH.":
+        btech()
+    elif programme=="M. TECH.":
+        mtech()
+    elif programme=="PH. D.":
+        phd()
+    else:
+        print("The entered programme does not exist.")
 #issue book
 def issue():
     subject = input("Enter the subject of the book which you want to issue: ")
@@ -71,16 +78,21 @@ def issue():
     b_i.close()
     choice()
 c = 0
+#to refresh the contents of the BOOKS_ISSUE file for a new user
 b_i = open('BOOKS_ISSUE.csv', 'r+')
 b_i.seek(0)
 b_i.truncate()
+name1 = "Name of issuer: " + name
+b_i = open('BOOKS_ISSUE.csv', 'a')
+b_i.write(name1)
+b_i.write("\n")
+b_i.close()
 def choice():
     global c
     ch = int(input("Enter '1' if you want to issue a book, otherwise enter any other character\nChoice: "))
     if ch==1:
         c = c+1
         if c<=3:
-            print("hello")
             issue()
         else:
             print("Sorry! No more than three books can be issued.") 
