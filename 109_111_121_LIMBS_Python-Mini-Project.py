@@ -13,7 +13,11 @@ elif programme=="M.Tech." or programme=="M. Tech.":
     year = int(input("'1' for FY, '2' for SY.\nYear: "))
 elif programme=="Ph.D." or programme=="PhD":
     year = int(input("Enter a number indicating the number of years you have been doing this course.\nYear: "))
-        
+
+if role=="Faculty":
+    print("As a Faculty, You can not access this system!!")
+elif age<18:
+    print("Only people of age 18 and above can access this system.")
 if programme=="B. Tech.":
     def btech():
         if year==1:
